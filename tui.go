@@ -27,15 +27,15 @@ func isTerminal() bool {
 // TUI model
 
 type model struct {
-	branches   []Branch
-	filtered   []Branch
-	cursor     int
-	width      int
-	height     int
-	search     string
-	status     string
-	sortBy     string // name|time
-	sortDesc   bool
+	branches []Branch
+	filtered []Branch
+	cursor   int
+	width    int
+	height   int
+	search   string
+	status   string
+	sortBy   string // name|time
+	sortDesc bool
 
 	confirming bool
 	action     string // "delete" | "merge"
