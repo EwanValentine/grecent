@@ -17,32 +17,21 @@ Includes a modern TUI (Bubble Tea + Lip Gloss) with fuzzy search, sorting, and q
 
 ### Install
 
-- From this folder (local dev):
+- From source (recommended):
   ```fish
-  # Ensure you're in the project directory
-  cd /Users/ewan.valentine/personal/grecent
-
-  # Install to GOPATH/bin
-  go install .
-
-  # Ensure GOPATH/bin is on PATH (fish)
+  go install github.com/EwanValentine/grecent@latest
+  ```
+  Ensure your `GOPATH/bin` is on `PATH`. On fish:
+  ```fish
   fish_add_path (go env GOPATH)/bin
-
-  # Verify
-  grecent --help
   ```
 
-- Or install the built binary into Homebrew's bin:
+- Local build (for contributors):
   ```fish
-  cd /Users/ewan.valentine/personal/grecent
+  git clone https://github.com/EwanValentine/grecent.git
+  cd grecent
   go build -o grecent .
-  # might require sudo depending on permissions
-  install -m 0755 grecent /opt/homebrew/bin/grecent
-  ```
-
-- Once hosted on GitHub with a proper module path, installation becomes:
-  ```fish
-  go install github.com/<you>/grecent@latest
+  ./grecent --help
   ```
 
 ### Usage
@@ -103,19 +92,9 @@ Branches are then sorted by this computed time (most recent first).
 - Slow remote times: use `--fetch` to refresh remotes if needed
 - Merge conflicts when using `m`: resolve with normal git workflow
 
-### Development
-- Build:
-  ```fish
-  go build -o grecent .
-  ```
-- Run:
-  ```fish
-  ./grecent --tui
-  ```
-- Update deps:
-  ```fish
-  go mod tidy
-  ```
+### Contributing
+- Issues and PRs welcome at `github.com/EwanValentine/grecent`.
+- Run `go mod tidy && go build` before submitting.
 
 ### License
-MIT (or your preferred license).
+MIT (see LICENSE).

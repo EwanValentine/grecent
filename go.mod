@@ -1,4 +1,4 @@
-module grecent
+module github.com/EwanValentine/grecent
 
 go 1.22
 

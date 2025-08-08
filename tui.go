@@ -14,7 +14,7 @@ import (
 )
 
 // Safe terminal detection without external deps
-func isTerminal(fd uintptr) bool {
+func isTerminal() bool {
 	// Basic heuristic: if stdout is not a character device, likely not a TTY.
 	// On macOS and most Unix, os.Stdout.Stat().Mode()&os.ModeCharDevice != 0 indicates a TTY.
 	fi, err := os.Stdout.Stat()
@@ -27,15 +27,15 @@ func isTerminal(fd uintptr) bool {
 // TUI model
 
 type model struct {
-	branches []Branch
-	filtered []Branch
-	cursor   int
-	width    int
-	height   int
-	search   string
-	status   string
-	sortBy   string // name|time
-	sortDesc bool
+	branches   []Branch
+	filtered   []Branch
+	cursor     int
+	width      int
+	height     int
+	search     string
+	status     string
+	sortBy     string // name|time
+	sortDesc   bool
 
 	confirming bool
 	action     string // "delete" | "merge"
@@ -70,7 +70,7 @@ type statusMsg string
 // Update/View
 
 func (m model) Init() tea.Cmd {
-	return tea.Batch(tick(), status("j/k or ↑/↓ move • / search • s sort • r refresh • f fetch • enter checkout • x delete • m merge into current • q quit"))
+	return tea.Batch(tick(), status("j/k or ↑/↓ move • / search (fuzzy) • s sort • r refresh • f fetch • enter checkout • x delete • m merge into current • q quit"))
 }
 
 func tick() tea.Cmd {

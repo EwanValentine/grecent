@@ -103,7 +103,7 @@ func main() {
 	}
 
 	// Auto-run TUI if stdout is a terminal, unless disabled explicitly
-	if (forceTUI || (isTerminal(os.Stdout.Fd()) && !disableTUI)) && !jsonOut {
+	if (forceTUI || (isTerminal() && !disableTUI)) && !jsonOut {
 		if err := runTUI(branches); err != nil {
 			fatal("%v", err)
 		}
